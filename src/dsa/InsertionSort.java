@@ -1,4 +1,4 @@
-package ood;
+package dsa;
 
 public class InsertionSort {
     public void sort(int [] arr) {

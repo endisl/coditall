@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) {
 
         //Rotations
-        var rotations = new Rotations();
-        System.out.println(rotations.areRotations("", ""));
+        /*var rotations = new Rotations();
+        System.out.println(rotations.areRotations("", ""));*/
 
         //Anagrams
         /*var result= AnagramsHisto.areAnagrams("abccc", "bacc");

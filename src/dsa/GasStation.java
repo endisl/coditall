@@ -5,18 +5,22 @@ public class GasStation {
 
     //v.2.0
     // O(n) time | O(1) space
+    // the trick is sum(gas) >= sum(cost) in order to complete a round trip
+    // that means diff = sum(gas) - sum(cost) >= 0
+    // where diff is what we have in the tank after coming back at the starting point
+    // diff has to be diff>0 or diff=0 (breaking even) in order to make a round trip
     public static int canCompleteCircuit(int[] gas, int[] cost) {
-        int sum = 0, n = gas.length;
+        int diff = 0, n = gas.length;
         int tank = 0, start = 0;
         for (int i = 0; i < n; i++) {
-            tank += gas[i] - cost[i];
-            sum += gas[i] - cost[i];
+            tank += gas[i] - cost[i]; //this line checks right away whether the index is a good starting point or not
+            diff += gas[i] - cost[i];
             if (tank < 0) {
                 tank = 0;
                 start = i+1;
             }
         }
-        return sum >= 0 ? start : -1;
+        return diff >= 0 ? start : -1;
     }
 
     //v.1.0

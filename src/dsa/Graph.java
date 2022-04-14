@@ -2,8 +2,14 @@ package dsa;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
 
-public class GraphBFS {
+public class Graph {
+
+    private class Node {
+
+    }
 
     public void bfs(String root) {
         var node = nodes.get(root);

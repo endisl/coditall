@@ -74,6 +74,32 @@ public class Graph {
         }
     }
 
+    public void dfs(String root) {
+        var node = nodes.get(root);
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            var current = stack.pop();
+            if (visited.contains(current))
+                continue;
+
+            System.out.println(current);
+            visited.add(current);
+
+            for (var neighbor : adjacencyList.get(current)) {
+                if (!visited.contains(neighbor))
+                    stack.push(neighbor);
+            }
+        }
+    }
+
+
+
     public void bfs(String root) {
         var node = nodes.get(root);
         if (root == null)

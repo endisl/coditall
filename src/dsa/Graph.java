@@ -146,6 +146,6 @@ public class Graph {
                 topologicalSort(neighbor, stack, visited);
         }
 
-        stack.push(root);
+        stack.push(node);
     }
 }

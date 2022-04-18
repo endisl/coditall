@@ -135,4 +135,17 @@ public class Graph {
 
         return sorted;
     }
+
+    public void topologicalSort(Node node, Stack<Node> stack, Set<Node> visited) {
+        if (visited.contains(node))
+            return;
+        visited.add(node);
+
+        for (var neighbor : adjacencyList.get(node)) {
+            if (!visited.contains(neighbor))
+                topologicalSort(neighbor, stack, visited);
+        }
+
+        stack.push(root);
+    }
 }

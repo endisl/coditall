@@ -98,8 +98,6 @@ public class Graph {
         }
     }
 
-
-
     public void bfs(String root) {
         var node = nodes.get(root);
         if (root == null)
@@ -121,5 +119,20 @@ public class Graph {
                     queue.add(neighbour);
             }
         }
+    }
+
+    //check first to see if the graph is DAG (Directed Acyclic Graph)
+    public List<String> topologicalSort() {
+        Stack<Node> stack = new Stack<>();
+        Set<Node> visited = new HashSet<>();
+
+        for (var node : nodes.values())
+            topologicalSort(node, stack, visited);
+
+        List<String> sorted = new ArrayList<>();
+        while (!stack.isEmpty())
+            sorted.add(stack.pop().label);
+
+        return sorted;
     }
 }

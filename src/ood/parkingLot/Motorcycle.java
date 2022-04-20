@@ -7,6 +7,6 @@ public class Motorcycle extends Vehicle {
     }
 
     public boolean canFitInSpot (ParkingSpot spot) {
-
+        //...
     }
 }

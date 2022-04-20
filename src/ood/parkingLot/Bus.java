@@ -7,6 +7,6 @@ public class Bus extends Vehicle {
     }
 
     public boolean canFitInSpot(ParkingSpot spot) {
-
+        //...
     }
 }

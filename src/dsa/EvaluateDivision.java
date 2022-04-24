@@ -18,8 +18,13 @@ public class EvaluateDivision {
     //dfs
     private static double getPathWeight(String start, String end, Set<String> visited, Map<String, Map<String, Double>> graph) {
         //reject
-        if (!graph.containsKey(start))
+        if (!graph.containsKey(start) || !graph.containsKey(end))
             return -1.;
+
+        //same existing node
+        if (graph.containsKey(start) && start.equals(end))
+            return 1.;
+
         //accept
         if (graph.get(start).containsKey(end))
             return graph.get(start).get(end);
@@ -57,5 +62,6 @@ public class EvaluateDivision {
 
         var result = EvaluateDivision.calcEquation(equations, values, queries);
         System.out.println(Arrays.toString(result));
+        //output: [6.0, 0.5, -1.0, 1.0, -1.0]
     }
 }

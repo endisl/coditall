@@ -6,7 +6,11 @@ public class Motorcycle extends Vehicle {
         size = VehicleSize.Motorcycle;
     }
 
-    public boolean canFitInSpot (ParkingSpot spot) {
-        //...
+    public boolean canFitInSpot(ParkingSpot spot) {
+        return true;
+    }
+
+    public void print() {
+        System.out.print("M");
     }
 }

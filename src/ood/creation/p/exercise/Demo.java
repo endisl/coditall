@@ -13,6 +13,5 @@ public class Demo {
             Text textComponent = (Text)component;
             System.out.println(textComponent.getContent());
         }
-
     }
 }

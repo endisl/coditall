@@ -9,4 +9,8 @@ public class Timeline {
     public void add(Component component) {
         components.add(component);
     }
+
+    public List<Component> getComponents() {
+        return components;
+    }
 }

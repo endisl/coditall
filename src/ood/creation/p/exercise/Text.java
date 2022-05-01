@@ -14,7 +14,6 @@ public class Text implements Component {
 
     @Override
     public Component clone() {
-        Text newText = new Text(getContent());
-        return newText;
+        return new Text(content);
     }
 }

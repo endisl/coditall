@@ -4,7 +4,7 @@ import ood.creation.af.exercise.WorkoutPlan;
 
 public class BuildMuscleWorkout implements WorkoutPlan {
     @Override
-    public void render() {
-        System.out.println("Build Muscle Workout Plan printed");
+    public void print() {
+        System.out.println("Build muscle workout plan printed");
     }
 }

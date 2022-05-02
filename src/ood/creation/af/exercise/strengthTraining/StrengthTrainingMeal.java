@@ -4,7 +4,7 @@ import ood.creation.af.exercise.MealPlan;
 
 public class StrengthTrainingMeal implements MealPlan {
     @Override
-    public void render() {
-
+    public void print() {
+        System.out.println("Strength training meal plan printed");
     }
 }

@@ -4,7 +4,7 @@ import ood.creation.af.exercise.WorkoutPlan;
 
 public class StrengthTrainingWorkout implements WorkoutPlan {
     @Override
-    public void render() {
-
+    public void print() {
+        System.out.println("Strength training workout plan printed");
     }
 }

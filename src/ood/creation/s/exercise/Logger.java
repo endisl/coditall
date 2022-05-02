@@ -12,7 +12,7 @@ public class Logger {
     }
 
     public void write(String message) {
-        System.out.println("Writing a message to the log.");
+        System.out.println(filename + ": " + message);
     }
 
     public static Logger getInstance(String filename) {

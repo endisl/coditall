@@ -31,6 +31,7 @@ public class Document {
                     document.add(new HtmlImage(source));
                 }
             }
+            content = document.toString();
         } else if (format == ExportFormat.TEXT) {
             var builder = new StringBuilder();
 

@@ -1,6 +1,6 @@
 package ood.creation.b.exercise;
 
-public class Text {
+public class Text implements Element {
     private String content;
 
     public Text(String content) {

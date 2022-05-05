@@ -9,6 +9,6 @@ public class HtmlImage extends HtmlElement {
 
     @Override
     public String toString() {
-        return String.format("<img src=\"%s\" />", source);
+        return String.format("<img src=\"%s\"/>", source);
     }
 }

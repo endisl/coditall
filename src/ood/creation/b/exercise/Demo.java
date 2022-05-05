@@ -7,7 +7,7 @@ public class Demo {
         var document = new Document();
         document.add(new Text("Hi there"));
         document.add(new Image("picture.jpg"));
-        document.export(ExportFormat.HTML, "export.html");
-        document.export(ExportFormat.TEXT, "export.txt");
+        document.export(new HtmlDocumentBuilder(), "export.html");
+        document.export(new TextDocumentBuilder(), "export.txt");
     }
 }

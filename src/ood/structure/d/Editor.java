@@ -2,17 +2,15 @@ package ood.structure.d;
 
 public class Editor {
     public void openProject(String path) {
-        Artefact[] artefacts = {
+        AbstractArtefact[] artefacts = {
                 new Artefact("Main"),
                 new Artefact("Demo"),
                 new Artefact("EmailClient"),
                 new Artefact("EmailProvider"),
         };
 
-        artefacts[0].setMain(true);
-        artefacts[1].setHasError(true);
-        artefacts[1].setMain(true);
-        artefacts[2].setHasError(true);
+       artefacts[0] = new MainDecorator(new ErrorDecorator(artefacts[0]));
+       artefacts[2] = new ErrorDecorator(artefacts[2]);
 
         for (var artefact: artefacts)
             System.out.println(artefact.render());

@@ -1,4 +1,4 @@
-package ood.structure.c.exercise;
+package ood.structure.c;
 
 public class Demo {
     public static void main(String[] args) {

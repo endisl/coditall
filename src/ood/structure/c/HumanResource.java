@@ -1,4 +1,4 @@
-package ood.structure.c.exercise;
+package ood.structure.c;
 
 public class HumanResource implements Component {
     @Override

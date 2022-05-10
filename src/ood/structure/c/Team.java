@@ -1,4 +1,4 @@
-package ood.structure.c.exercise;
+package ood.structure.c;
 
 import java.util.ArrayList;
 import java.util.List;

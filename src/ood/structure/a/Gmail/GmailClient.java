@@ -1,4 +1,4 @@
-package ood.structure.a;
+package ood.structure.a.Gmail;
 
 public class GmailClient {
     public void connect() {

@@ -1,51 +1,30 @@
 package ood.structure.fly;
 
 public class Cell {
-  private final int row;
-  private final int column;
-  private String content;
-  private String fontFamily;
-  private int fontSize;
-  private boolean isBold;
+    private final int row;
+    private final int column;
+    private String content;
+    private CellContext context;
 
-  public Cell(int row, int column) {
-    this.row = row;
-    this.column = column;
-  }
+    public Cell(int row, int column, CellContext context) {
+        this.row = row;
+        this.column = column;
+        this.context = context;
+    }
 
-  public String getContent() {
-    return content;
-  }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+    public void setContext(CellContext context) {
+        this.context = context;
+    }
 
-  public String getFontFamily() {
-    return fontFamily;
-  }
+    public CellContext getContext() {
+        return context;
+    }
 
-  public void setFontFamily(String fontFamily) {
-    this.fontFamily = fontFamily;
-  }
-
-  public int getFontSize() {
-    return fontSize;
-  }
-
-  public void setFontSize(int fontSize) {
-    this.fontSize = fontSize;
-  }
-
-  public boolean isBold() {
-    return isBold;
-  }
-
-  public void setBold(boolean bold) {
-    isBold = bold;
-  }
-
-  public void render() {
-    System.out.printf("(%d, %d): %s [%s]\n", row, column, content, fontFamily);
-  }
+    public void render() {
+        System.out.printf("(%d, %d): %s [%s] [%d]\n", row, column, content, context.getFontFamily(), context.getFontSize());
+    }
 }

@@ -10,25 +10,35 @@ public class ProductCollection {
         products.add(product);
     }
 
-    public void remove(Product product) {
-        products.remove(product);
+    /*public void remove() {
+        products.remove(products.size() - 1);
+    }*/
+
+    public Iterator createIterator() {
+        return new ListIterator(this);
     }
 
     public class ListIterator implements Iterator {
+        private ProductCollection collection;
+        private int index;
+
+        public ListIterator(ProductCollection collection) {
+            this.collection = collection;
+        }
 
         @Override
         public Product current() {
-            return null;
+            return collection.products.get(index);
         }
 
         @Override
         public boolean hasNext() {
-            return false;
+            return index < collection.products.size();
         }
 
         @Override
         public void next() {
-
+            index++;
         }
     }
 }

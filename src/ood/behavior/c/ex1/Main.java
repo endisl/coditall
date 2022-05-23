@@ -3,6 +3,7 @@ package ood.behavior.c.ex1;
 import ood.behavior.c.ex1.editor.BoldCommand;
 import ood.behavior.c.ex1.editor.History;
 import ood.behavior.c.ex1.editor.HtmlDocument;
+import ood.behavior.c.ex1.editor.UndoCommand;
 import ood.behavior.c.ex1.fx.Button;
 
 public class Main {
@@ -24,8 +25,10 @@ public class Main {
         var boldCommand = new BoldCommand(document, history);
         boldCommand.execute();
         System.out.println(document.getContent());
-        boldCommand.unexecute();
+        /*boldCommand.unexecute();
+        System.out.println(document.getContent());*/
+        var undoCommand = new UndoCommand(history);
+        undoCommand.execute();
         System.out.println(document.getContent());
-
     }
 }

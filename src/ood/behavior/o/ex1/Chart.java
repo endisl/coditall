@@ -1,8 +1,14 @@
 package ood.behavior.o.ex1;
 
 public class Chart implements Observer {
+    private DataSource dataSource;
+
+    public Chart(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Override
-    public void update(int value) {
-        System.out.println("Chart got updated: " + value);
+    public void update() {
+        System.out.println("Chart got updated: " + dataSource.getValue());
     }
 }

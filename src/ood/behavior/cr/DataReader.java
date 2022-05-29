@@ -1,13 +1,25 @@
 package ood.behavior.cr;
 
-public class DataReader {
-    private Handler handler;
+public abstract class DataReader {
+    private DataReader next;
 
-    public DataReader(Handler handler) {
-        this.handler = handler;
+    public void setNext(DataReader next) {
+        this.next = next;
     }
 
-    public void handle(String filename) {
-        handler.handle(filename);
+    public void read(String filename) {
+        if (filename.endsWith(getExtension())) {
+            this.doRead(filename);
+            return;
+        }
+
+        if (next != null)
+            next.read(filename);
+        else
+            throw new UnsupportedOperationException("File format not supported.");
     }
+
+    protected abstract String getExtension();
+
+    protected abstract void doRead(String filename);
 }

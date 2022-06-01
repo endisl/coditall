@@ -3,7 +3,7 @@ package ood.parkingLot;
 import java.util.ArrayList;
 
 public abstract class Vehicle {
-    protected ArrayList<ParkingSpot> parkingSpots = new ArrayList<ParkingSpot>();
+    protected ArrayList<ParkingSpot> parkingSpots = new ArrayList<>();
     protected String licensePlate;
     protected int spotsNeeded;
     protected VehicleSize size;
@@ -21,9 +21,11 @@ public abstract class Vehicle {
         parkingSpots.add(s);
     }
 
-    // Remove car from spot and notify spot that it's gone
+    // Remove car from spot, and notify spot that it's gone
     public void clearSpots() {
-        //...
+        for (int i = 0; i < parkingSpots.size(); i++)
+            parkingSpots.get(i).removeVehicle();
+
         parkingSpots.clear();
         System.out.println("Spots for Vehicle cleared.");
     }

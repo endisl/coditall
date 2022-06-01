@@ -27,16 +27,69 @@ public class Level {
     public int getAvailableSpots() {
         return availableSpots;
     }
+
     public boolean parkVehicle(Vehicle vehicle) {
-        //...
+        if (getAvailableSpots() < vehicle.getSpotsNeeded())
+            return false;
+
+        int spotNumber = findAvailableSpots(vehicle);
+        if (spotNumber < 0)
+            return false;
+
+        return parkStartingAtSpot(spotNumber, vehicle);
     }
-    private boolean parkStartingAtSpot(int num, Vehicle v) {
-        //...
+
+    private boolean parkStartingAtSpot(int spotNumber, Vehicle vehicle) {
+        vehicle.clearSpots();
+
+        boolean success = true;
+        for (int i = spotNumber; i < spotNumber + vehicle.spotsNeeded; i++)
+            success &= spots[i].park(vehicle);
+
+        availableSpots -= vehicle.spotsNeeded;
+        return success;
     }
 
     private int findAvailableSpots(Vehicle vehicle) {
-        //...
+        int spotsNeeded = vehicle.getSpotsNeeded();
+        int lastRow = -1;
+        int spotsFound = 0;
+
+        for (int i = 0; i < spots.length; i++) {
+            ParkingSpot spot = spots[i];
+
+            if (lastRow != spot.getRow()) {
+                spotsFound = 0;
+                lastRow = spot.getRow();
+            }
+
+            if (spot.canFitVehicle(vehicle))
+                spotsFound++;
+            else
+                spotsFound = 0;
+
+            if (spotsFound == spotsNeeded)
+                return i - (spotsNeeded - 1);
+        }
+
+        return -1;
     }
+
+    public void print() {
+        int lastRow = -1;
+
+        for (int i = 0; i < spots.length; i++) {
+            ParkingSpot spot = spots[i];
+
+            if (spot.getRow() != lastRow) {
+                System.out.print("  ");
+                lastRow = spot.getRow();
+            }
+
+            spot.print();
+        }
+    }
+
     public void spotFreed() {
         availableSpots++;
     }

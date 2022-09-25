@@ -65,3 +65,54 @@ class ParkingLot(object):
             if level.park_vehicle(vehicle):
                 return True
         return False
+
+
+class Level(object):
+    SPOTS_PER_ROW = 10
+
+    def __init__(self, floor, total_spots):
+        self.floor = floor
+        self.num_spots = total_spots
+        self.available_spots = 0
+        self.spots = []
+
+    def spot_freed(self):
+        self.available_spots += 1
+
+    def park_vehicle(self, vehicle):
+        spot = self._find_available_spot(vehicle)
+        if spot is None:
+            return None
+        else:
+            spot.park_vehicle(vehicle)
+            return spot
+
+    def _find_available_spot(self, vehicle):
+        pass
+
+    def _park_starting_at_spot(self, spot, vehicle):
+        pass
+
+
+class ParkingSpot(object):
+    def __init__(self, level, row, spot_number, spot_size, vehicle_size):
+        self.level = level
+        self.row = row
+        self.spot_number = spot_number
+        self.spot_size = spot_size
+        self.vehicle_size = vehicle_size
+        self.vehicle = None
+
+    def is_available(self):
+        return True if self.vehicle is None else False
+
+    def can_fit_vehicle(self, vehicle):
+        if self.vehicle is not None:
+            return False
+        return vehicle.can_fit_in_spot(self)
+
+    def park_vehicle(self, vehicle):
+        pass
+
+    def remove_vehicle(self):
+        pass

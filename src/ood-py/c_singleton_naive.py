@@ -5,13 +5,12 @@ class SingletonMeta(type):
         if cls not in cls._instances:
             instance = super().__call__(*args, **kwds)
             cls._instances[cls] = instance
-        return cls._instances
+        return cls._instances[cls]
 
 
 class Singleton(metaclass=SingletonMeta):
     def some_business_logic(self):
-        """
-        """
+        pass
 
 
 if __name__ == "__main__":

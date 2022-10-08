@@ -68,7 +68,7 @@ def client_code2(component1: Component, component2: Component) -> None:
 
 if __name__ == "__main__":
     simple = Leaf()
-    print("Client: I've got a simple compoent:")
+    print("Client: I've got a simple component:")
     client_code1(simple)
     print("\n")
 

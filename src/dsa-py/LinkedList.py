@@ -12,7 +12,7 @@ class linked_list:
         self.head = node(data=data, next=self.head)
 
     def is_empty(self):
-        self.head == None
+        return self.head is None
 
     def add_at_end(self, data):
         if not self.head:
@@ -43,6 +43,25 @@ class linked_list:
 
     def print_list(self):
         node = self.head
-        while (node != None):
+        while (node is not None):
             print(node.data, end=" => ")
             node = node.next
+
+
+s = linked_list()
+print(s.is_empty())
+s.add_at_front(10)
+s.print_list()
+print()
+s.add_at_end(15)
+s.print_list()
+print()
+s.add_at_end(20)
+s.print_list()
+print()
+s.add_at_front(25)
+s.print_list()
+print()
+print(s.get_last_node())
+s.delete_node(20)
+s.print_list()

@@ -12,7 +12,7 @@ class Data:
         'smart': {'price': 979.0, 'quantity': 10}
     }
 
-    def __get__self(self, obj, klas):
+    def __get__(self, obj, cls):
         print('(Fetching from Data Store)')
         return {'products': self.products}
 
@@ -45,8 +45,41 @@ class UI:
             print('PRODUCT INFORMATION:')
             print(
                 f"Name: {product.title()}, "
-                + f"Price: {product_info.get('price', 0):.2f}, "
-                + f"Quantity: {product_info.get('quantity', 0)}, "
+                + f"Price: {product_info.get('price', 0):.1f}, "
+                + f"Quantity: {product_info.get('quantity', 0)}"
             )
         else:
             print(f"The product '{product}' does not exist in the records")
+
+
+def main():
+    """
+    >>> ui = UI()
+    >>> ui.get_product_list()
+    PRODUCT LIST:
+    (Fetching from Data Store)
+    moto
+    sams
+    smart
+    <BLANKLINE>
+
+    >>> ui.get_product_information('moto')
+    (Fetching from Data Store)
+    PRODUCT INFORMATION:
+    Name: Moto, Price: 589.0, Quantity: 20
+
+    >>> ui.get_product_information('smart')
+    (Fetching from Data Store)
+    PRODUCT INFORMATION:
+    Name: Smart, Price: 979.0, Quantity: 10
+
+    >>> ui.get_product_information('nok')
+    (Fetching from Data Store)
+    The product 'nok' does not exist in the records
+    """
+
+
+if __name__ == '__main__':
+    import doctest
+
+    doctest.testmod()

@@ -1,3 +1,7 @@
+"""
+a singleton-like behavior with shared-state among instances
+"""
+
 from typing import Dict
 
 
@@ -33,6 +37,10 @@ def main():
     rm1 : Running
     >>> print('rm2 : {0}'.format(rm2))
     rm2 : Running
+
+    >>> rm1 is rm2
+    False
+
     """
 
 

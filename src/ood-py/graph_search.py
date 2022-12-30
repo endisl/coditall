@@ -16,7 +16,7 @@ class GraphSearch:
                 if newpath:
                     return newpath
 
-    def find_all_path_dfs(self, start, end, path=None):
+    def find_all_paths_dfs(self, start, end, path=None):
         path = path or []
 
         path.append(start)
@@ -26,7 +26,7 @@ class GraphSearch:
         paths = []
         for node in self.graph.get(start, []):
             if node not in path:
-                newpaths = self.find_all_path_dfs(node, end, path[:])
+                newpaths = self.find_all_paths_dfs(node, end, path[:])
                 paths.extend(newpaths)
         return paths
 
@@ -69,3 +69,62 @@ class GraphSearch:
                             node = edge_to[node]
                         path.insert(0, start)
                         return path
+
+
+def main():
+    """    
+    >>> graph = {
+    ...     'A': ['B', 'C'],
+    ...     'B': ['C', 'D'],
+    ...     'C': ['D', 'G'],
+    ...     'D': ['C'],
+    ...     'E': ['F'],
+    ...     'F': ['C'],
+    ...     'G': ['E'],
+    ...     'H': ['C']
+    ... }
+
+    >>> graph_search = GraphSearch(graph)
+
+    >>> print(graph_search.find_path_dfs('A', 'D'))
+    ['A', 'B', 'C', 'D']
+
+    >>> print(graph_search.find_path_dfs('G', 'F'))
+    ['G', 'E', 'F']
+
+    >>> print(graph_search.find_path_dfs('C', 'H'))
+    None
+
+    >>> print(graph_search.find_path_dfs('C', 'X'))
+    None
+
+    >>> print(graph_search.find_all_paths_dfs('A', 'D'))
+    [['A', 'B', 'C', 'D'], ['A', 'B', 'D'], ['A', 'C', 'D']]
+
+    >>> print(graph_search.find_shortest_path_dfs('A', 'D'))
+    ['A', 'B', 'D']
+
+    >>> print(graph_search.find_shortest_path_dfs('A', 'F'))
+    ['A', 'C', 'G', 'E', 'F']
+
+    >>> print(graph_search.find_shortest_path_bfs('A', 'D'))
+    ['A', 'B', 'D']
+
+    >>> print(graph_search.find_shortest_path_bfs('A', 'F'))
+    ['A', 'C', 'G', 'E', 'F']
+
+    >>> print(graph_search.find_shortest_path_bfs('G', 'F'))
+    ['G', 'E', 'F']
+
+    >>> print(graph_search.find_shortest_path_bfs('A', 'H'))
+    None
+
+    >>> print(graph_search.find_shortest_path_bfs('A', 'X'))
+    None
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
